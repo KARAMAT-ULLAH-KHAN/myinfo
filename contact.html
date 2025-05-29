@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K.U Khan</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&family=Caveat:wght@400..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Monoton&family=Oleo+Script:wght@400;700&family=Playwrite+IN:wght@100..400&family=Playwrite+TZ+Guides&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/styles/styles.css">
+</head>
+<body>
+        <div class="container" id="navbar">
+           
+        </div>
+    <main>
+        <div class="container containerFormat text-center">
+            <span class=" tcolor">Please Submit Your Query here 👇</span>
+            <p class="tcolor">email:   karamat.1024@gmail.com</p> 
+            <p class="tcolor">whatsapp No: +92-332-9366577</p>
+            <form method="get" action="close.html" class="px-4 py-3">
+              <div class="mb-3">
+                <label for="exampleDropdownFormEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="exampleDropdownFormEmail1"  required placeholder="email@example.com">
+              </div>
+              <div class="mb-3">
+                <label for="firstname" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="firstname"  required placeholder="First Name">
+              </div>
+              <div class="mb-3">
+                <label for="lastname" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="lastname"  required placeholder="Last Name">
+              </div>
+              <div class="mb-3">
+               <textarea name="description" id="description" width="600px" placeholder="Please Enter your query (if any)"></textarea>
+               <p class="tcolor"><span id="limit" class="tcolor">0</span>/500</p>
+              </div>
+              <div class="mb-3">
+              </div>
+              <button type="submit"  class="btn btn-primary">Subscribe!</button>
+            </form>
+          
+          </div>
+    </main>
+    <footer id="footer">
+
+    </footer>
+
+    <div class="alert1" id="alert1">
+        <div class="alert2">
+            <h3>Maximum input is upto 500 letters</h3>
+            <button onclick="closeAlert()" class="closeAlert btn btn-danger">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Use pagehide instead of unload for bfcache support
+        window.addEventListener('pagehide', function (event) {
+          if (event.persisted) {
+            console.log('Page is entering bfcache');
+          } else {
+            console.log('Page is being discarded, not cached');
+          }
+        });
+        
+
+        fetch("header.html")
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById("navbar").innerHTML = data;
+          });
+        fetch("footer.html")
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById("footer").innerHTML = data;
+          });
+          
+          var desc=document.getElementById("description");
+          desc.addEventListener("input",()=>{
+            document.getElementById("limit").textContent = desc.value.length;
+            if(desc.value.length>500){
+                desc.value = desc.value.substring(0, 500); // Trim to 500 characters
+            // window.alert("Maximum input is upto 500 letters");
+            
+            document.getElementById("alert1").style.display= "flex";
+          }
+          });
+
+          function closeAlert(){
+            document.getElementById("alert1").style.display= "none";
+          }
+          
+      </script>
+
+</body>
+</html>
