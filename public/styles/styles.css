@@ -4,6 +4,9 @@ body{
 main{
     
 }
+#projects{
+    display:none;
+}
 .containerFormat{
     margin-top: 80px;
     width: 60%;
